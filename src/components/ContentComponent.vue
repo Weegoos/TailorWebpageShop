@@ -23,13 +23,14 @@
         </div>
       </q-img>
     </div>
+    <FeaturedProducts @handleToShopPage="handleToShopPage" />
   </div>
 </template>
 
 <script setup>
 import { QSpinnerGears, useQuasar, useTimeout } from "quasar";
-import { onBeforeMount, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import FeaturedProducts from "./FeaturedProducts.vue";
 
 const router = useRouter();
 const { registerTimeout } = useTimeout();
@@ -42,25 +43,10 @@ const newArrival = () => {
 };
 
 const $q = useQuasar();
-onBeforeMount(() => {
-  registerTimeout(() => {
-    $q.notify({
-      message: "Страница загружается",
-      spinner: QSpinnerGears,
-      caption: "Подождите",
-    });
-  }, 500);
-});
 
-onMounted(() => {
-  registerTimeout(() => {
-    $q.notify({
-      message: "Страница загрузилась",
-      icon: "check",
-      color: "positive",
-    });
-  }, 500);
-});
+const handleToShopPage = () => {
+  router.push({ name: "Shop" });
+};
 </script>
 
 <style>
