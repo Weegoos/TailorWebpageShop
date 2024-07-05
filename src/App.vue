@@ -1,7 +1,7 @@
 <template>
   <div>
     <keep-alive>
-      <AppComponent :buttons="buttons" />
+      <AppComponent :buttons="buttons" @handleBtn="handleClick" />
     </keep-alive>
   </div>
 </template>
@@ -46,4 +46,11 @@ const buttons = [
     link: "/contact",
   },
 ];
+
+const $q = useQuasar();
+function handleClick(e) {
+  $q.notify({
+    message: e.msg,
+  });
+}
 </script>

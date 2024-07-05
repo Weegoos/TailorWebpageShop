@@ -14,10 +14,16 @@
         align="center"
       >
         <div class="imgStyle">
-          <img :src="imgs.url" alt="" class="centeredImage" />
+          <q-img :src="imgs.url" alt="" class="centeredImage">
+            <caption class="captionImgShopCollection">
+              <p class="captionImgText">{{ imgs.name }}</p>
+            </caption>
+          </q-img>
         </div>
       </div>
     </div>
+
+    <Characteristics />
   </div>
 </template>
 
@@ -29,34 +35,35 @@ import shopCollectionTopRowImg3 from "../assets/ShopCollection/shopCollection (3
 import shopCollectionTopRowImg4 from "../assets/ShopCollection/shopCollection (4).png";
 import shopCollectionTopRowImg5 from "../assets/ShopCollection/shopCollection (5).png";
 import shopCollectionTopRowImg6 from "../assets/ShopCollection/shopCollection (6).png";
-
+import Characteristics from "./Characteristics.vue";
 onMounted(() => {
   console.clear();
 });
+
 const shopCollectionTopRowImg = [
   {
     url: shopCollectionTopRowImg1,
-    name: "",
+    name: "Suits & Vests",
   },
   {
     url: shopCollectionTopRowImg2,
-    name: "",
+    name: "Coats & Blazers",
   },
   {
     url: shopCollectionTopRowImg3,
-    name: "",
+    name: "Pants & Trausers",
   },
   {
     url: shopCollectionTopRowImg4,
-    name: "",
+    name: "Formal Shirts",
   },
   {
     url: shopCollectionTopRowImg5,
-    name: "",
+    name: "Tuxedos",
   },
   {
     url: shopCollectionTopRowImg6,
-    name: "",
+    name: "Casual Wear",
   },
 ];
 </script>
@@ -82,5 +89,21 @@ const shopCollectionTopRowImg = [
 
 .mobileContainer {
   flex-direction: column;
+}
+
+.captionImgShopCollection {
+  background-color: white;
+  /* max-width: 150px; */
+  position: relative;
+  top: 20vh;
+  width: 170px;
+}
+
+.captionImgText {
+  font-size: 16px;
+  padding: 3px;
+  position: relative;
+  top: 5px;
+  font-weight: bold;
 }
 </style>

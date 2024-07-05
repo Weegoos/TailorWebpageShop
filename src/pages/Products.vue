@@ -2,30 +2,27 @@
 <template>
   <div>
     <q-input v-model="text" type="text" label="Label" />
+    <ProductsComponent />
   </div>
 </template>
 
 <script setup>
-import { QSpinnerGears, useQuasar } from "quasar";
-import { onBeforeUpdate, onUpdated, ref } from "vue";
+import { useQuasar } from "quasar";
+import { computed, provide, ref, watch, watchEffect } from "vue";
+import ProductsComponent from "../components/ProductsComponent.vue";
 
 const $q = useQuasar();
 const text = ref("");
-onBeforeUpdate(() => {
-  $q.notify({
-    message: "Данные обрабатываются",
-    spinner: QSpinnerGears,
-    caption: "Подождите",
-  });
 
-  onUpdated(() => {
-    $q.notify({
-      message: `Данные обработаны:`,
-      color: "positive",
-      icon: "check",
-    });
-  });
+const values = computed(() => {
+  return text.value;
 });
+
+$q.notify({
+  message: values,
+});
+
+provide("text", values);
 </script>
 
 <style></style>

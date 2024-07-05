@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { onErrorCaptured } from "vue";
+import { onErrorCaptured, provide } from "vue";
 import ContentComponent from "../components/ContentComponent.vue";
 import { useQuasar } from "quasar";
 
